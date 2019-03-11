@@ -9,7 +9,7 @@ public class RandomAccessEmployeeRecord extends Employee
    public RandomAccessEmployeeRecord()
    {
       this(0, "","","",'\0', "", 0.0, false);
-   }
+   } 
 
    // Initialize record with details
    public RandomAccessEmployeeRecord( int employeeId, String pps, String surname, String firstName, char gender, 

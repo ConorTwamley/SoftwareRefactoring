@@ -22,7 +22,7 @@ public class SearchByIdDialog extends JDialog implements ActionListener {
 	// constructor for SearchByIdDialog 
 	public SearchByIdDialog(EmployeeDetails parent) {
 		setTitle("Search by Surname");
-		setModal(true);
+		setModal(true); 
 		this.parent = parent;
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 

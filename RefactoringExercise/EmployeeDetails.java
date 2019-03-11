@@ -362,7 +362,7 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 			}
 			application.closeReadFile();
 		}
-	}
+	} 
 
 	private void nextRecord() {
 		if (isSomeoneToDisplay()) {

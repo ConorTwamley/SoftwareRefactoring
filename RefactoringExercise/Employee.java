@@ -4,7 +4,7 @@ public class Employee{
 	private String pps;
 	private String surname;
 	private String firstName;
-	private char gender;
+	private char gender; 
 	private String department;
 	private double salary;
 	private boolean fullTime;

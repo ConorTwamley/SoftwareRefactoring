@@ -180,7 +180,7 @@ public class RandomFile {
 	public long getPrevious(long readFrom) {
 		long byteToStart = readFrom;
 
-		try {
+		try { 
 			input.seek(byteToStart);
 			// if previous position is start of file go to end of file, else get previous position
 			if (byteToStart == 0)

@@ -85,7 +85,7 @@ public class EmployeeSummaryDialog extends JDialog implements ActionListener {
 					return String.class;
 				}
 			}
-		};
+		}; 
 
 		employeeTable = new JTable(tableModel);
 		// add header names to table

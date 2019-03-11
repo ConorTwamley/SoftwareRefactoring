@@ -20,7 +20,7 @@ public class SearchBySurnameDialog extends JDialog implements ActionListener{
 	// constructor for search by surname dialog
 	public SearchBySurnameDialog(EmployeeDetails parent) {
 		setTitle("Search by Surname");
-		setModal(true);
+		setModal(true); 
 		this.parent = parent;
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 

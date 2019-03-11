@@ -8,8 +8,8 @@ class JTextFieldLimit extends PlainDocument {
   JTextFieldLimit(int limit) {
     super();
     this.limit = limit;
-  }
-
+  } 
+ 
   JTextFieldLimit(int limit, boolean upper) {
     super();
     this.limit = limit;
