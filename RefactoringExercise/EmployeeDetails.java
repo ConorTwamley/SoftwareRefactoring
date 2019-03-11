@@ -55,7 +55,7 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 	// decimal format for active currency text field
 	private static final DecimalFormat fieldFormat = new DecimalFormat("0.00");
 	// hold object start position in file
-	private long currentByteStart = 0;
+	private long currentPosition = 0;
 	private RandomFile application = new RandomFile();
 	// display files in File Chooser only with extension .dat
 	private FileNameExtensionFilter datfilter = new FileNameExtensionFilter("dat files (*.dat)", "dat");
@@ -343,8 +343,8 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 	private void firstRecord() {
 		if (isSomeoneToDisplay()) {
 			application.openReadFile(file.getAbsolutePath());
-			currentByteStart = application.getFirst();
-			currentEmployee = application.readRecords(currentByteStart);
+			currentPosition = application.getFirst();
+			currentEmployee = application.readRecords(currentPosition);
 			application.closeReadFile();
 			if (currentEmployee.getEmployeeId() == 0)
 				nextRecord();
@@ -354,11 +354,11 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 	private void previousRecord() {
 		if (isSomeoneToDisplay()) {
 			application.openReadFile(file.getAbsolutePath());
-			currentByteStart = application.getPrevious(currentByteStart);
-			currentEmployee = application.readRecords(currentByteStart);
+			currentPosition = application.getPrevious(currentPosition);
+			currentEmployee = application.readRecords(currentPosition);
 			while (currentEmployee.getEmployeeId() == 0) {
-				currentByteStart = application.getPrevious(currentByteStart);
-				currentEmployee = application.readRecords(currentByteStart);
+				currentPosition = application.getPrevious(currentPosition);
+				currentEmployee = application.readRecords(currentPosition);
 			}
 			application.closeReadFile();
 		}
@@ -367,11 +367,11 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 	private void nextRecord() {
 		if (isSomeoneToDisplay()) {
 			application.openReadFile(file.getAbsolutePath());
-			currentByteStart = application.getNext(currentByteStart);
-			currentEmployee = application.readRecords(currentByteStart);
+			currentPosition = application.getNext(currentPosition);
+			currentEmployee = application.readRecords(currentPosition);
 			while (currentEmployee.getEmployeeId() == 0) {
-				currentByteStart = application.getNext(currentByteStart);
-				currentEmployee = application.readRecords(currentByteStart);
+				currentPosition = application.getNext(currentPosition);
+				currentEmployee = application.readRecords(currentPosition);
 			}
 			application.closeReadFile();
 		}
@@ -380,8 +380,8 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 	private void lastRecord() {
 		if (isSomeoneToDisplay()) {
 			application.openReadFile(file.getAbsolutePath());
-			currentByteStart = application.getLast();
-			currentEmployee = application.readRecords(currentByteStart);
+			currentPosition = application.getLast();
+			currentEmployee = application.readRecords(currentPosition);
 			application.closeReadFile();
 			if (currentEmployee.getEmployeeId() == 0)
 				previousRecord();
@@ -484,7 +484,7 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 	// add Employee object to fail
 	public void addRecord(Employee newEmployee) {
 		application.openWriteFile(file.getAbsolutePath());
-		currentByteStart = application.addRecords(newEmployee);
+		currentPosition = application.addRecords(newEmployee);
 		application.closeWriteFile();
 	}
 
@@ -495,7 +495,7 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 					JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
 			if (returnVal == JOptionPane.YES_OPTION) {
 				application.openWriteFile(file.getAbsolutePath());
-				application.deleteRecords(currentByteStart);
+				application.deleteRecords(currentPosition);
 				application.closeWriteFile();
 				if (isSomeoneToDisplay()) {
 					nextRecord();
@@ -509,7 +509,7 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 	private Vector<Object> getAllEmloyees() {
 		Vector<Object> allEmployee = new Vector<Object>();
 		Vector<Object> empDetails;
-		long byteStart = currentByteStart;
+		long startPosition = currentPosition;
 		int firstId;
 
 		firstRecord();
@@ -528,7 +528,7 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 			allEmployee.addElement(empDetails);
 			nextRecord();
 		} while (firstId != currentEmployee.getEmployeeId());
-		currentByteStart = byteStart;
+		currentPosition = startPosition;
 
 		return allEmployee;
 	}
@@ -544,7 +544,7 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 		}
 	}
 
-	// ignore changes and set text field unenabled
+	// ignore changes and set text field un-editable
 	private void cancelChange() {
 		setEnabled(false);
 		displayRecords(currentEmployee);
@@ -630,7 +630,7 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 			ppsField.setBackground(new Color(255, 150, 150));
 			valid = false;
 		}
-		if (ppsField.isEditable() && correctPps(ppsField.getText().trim(), currentByteStart)) {
+		if (ppsField.isEditable() && correctPps(ppsField.getText().trim(), currentPosition)) {
 			ppsField.setBackground(new Color(255, 150, 150));
 			valid = false;
 		}
@@ -749,7 +749,7 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 					if (!idField.getText().equals("")) {
 						application.openWriteFile(file.getAbsolutePath());
 						currentEmployee = getChangedDetails();
-						application.changeRecords(currentEmployee, currentByteStart);
+						application.changeRecords(currentEmployee, currentPosition);
 						application.closeWriteFile();
 					}
 				}
@@ -768,7 +768,7 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 		if (returnVal == JOptionPane.YES_OPTION) {
 			application.openWriteFile(file.getAbsolutePath());
 			currentEmployee = getChangedDetails();
-			application.changeRecords(currentEmployee, currentByteStart);
+			application.changeRecords(currentEmployee, currentPosition);
 			application.closeWriteFile();
 			changesMade = false;
 		}
