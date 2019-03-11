@@ -268,7 +268,7 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 				else
 					field.setDocument(new JTextFieldLimit(20));
 				field.getDocument().addDocumentListener(this);
-			} // end if
+			}
 			else if (empDetails.getComponent(i) instanceof JComboBox) {
 				empDetails.getComponent(i).setBackground(Color.WHITE);
 				empDetails.getComponent(i).setEnabled(false);
@@ -362,7 +362,7 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 			}
 			application.closeReadFile();
 		}
-	} 
+	}
 
 	private void nextRecord() {
 		if (isSomeoneToDisplay()) {

@@ -66,7 +66,6 @@ public class RandomAccessEmployeeRecord extends Employee
          buffer = new StringBuffer( name );
       else 
          buffer = new StringBuffer( 20 );
-
       buffer.setLength( 20 );
       file.writeChars( buffer.toString() );
    } 
