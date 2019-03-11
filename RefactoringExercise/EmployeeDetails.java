@@ -341,7 +341,6 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 	}
 	
 	private void firstRecord() {
-		// if any active record in file look for first record
 		if (isSomeoneToDisplay()) {
 			application.openReadFile(file.getAbsolutePath());
 			currentByteStart = application.getFirst();
@@ -352,7 +351,6 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 		}
 	}
 
-	// find byte start in file for previous active record
 	private void previousRecord() {
 		if (isSomeoneToDisplay()) {
 			application.openReadFile(file.getAbsolutePath());
@@ -949,7 +947,6 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 	}
 
 	private static void createAndShowGUI() {
-
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.createContentPane();
 		frame.setSize(760, 600);
@@ -989,21 +986,15 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 		exitApp();
 	}
 
-	public void windowActivated(WindowEvent e) {
-	}
+	public void windowActivated(WindowEvent e) {}
 
-	public void windowClosed(WindowEvent e) {
-	}
+	public void windowClosed(WindowEvent e) {}
 
-	public void windowDeactivated(WindowEvent e) {
-	}
+	public void windowDeactivated(WindowEvent e) {}
 
-	public void windowDeiconified(WindowEvent e) {
-	}
+	public void windowDeiconified(WindowEvent e) {}
 
-	public void windowIconified(WindowEvent e) {
-	}
+	public void windowIconified(WindowEvent e) {}
 
-	public void windowOpened(WindowEvent e) {
-	}
+	public void windowOpened(WindowEvent e) {}
 }

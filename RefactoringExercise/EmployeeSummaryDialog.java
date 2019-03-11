@@ -67,7 +67,8 @@ public class EmployeeSummaryDialog extends JDialog implements ActionListener {
 		// add headers
 		for (int i = 0; i < headerName.length; i++) {
 			header.addElement(headerName[i]);
-		}// end for
+		}
+		
 		// construnct table and choose table model for each column
 		tableModel = new DefaultTableModel(this.allEmployees, header) {
 			public Class getColumnClass(int c) {
@@ -82,15 +83,15 @@ public class EmployeeSummaryDialog extends JDialog implements ActionListener {
 					return Boolean.class;
 				default:
 					return String.class;
-				}// end switch
-			}// end getColumnClass
+				}
+			}
 		};
 
 		employeeTable = new JTable(tableModel);
 		// add header names to table
 		for (int i = 0; i < employeeTable.getColumnCount(); i++) {
 			employeeTable.getColumn(headerName[i]).setMinWidth(colWidth[i]);
-		}// end for
+		}
 		// set alignments
 		employeeTable.getColumnModel().getColumn(0).setCellRenderer(leftRenderer);
 		employeeTable.getColumnModel().getColumn(4).setCellRenderer(centerRenderer);
@@ -110,13 +111,12 @@ public class EmployeeSummaryDialog extends JDialog implements ActionListener {
 		scrollPane.setBorder(BorderFactory.createTitledBorder("Employee Details"));
 		
 		return summaryDialog;
-	}// end summaryPane
+	}
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == back){
 			dispose();
 		}
-
 	}
 	// format for salary column
 	static class DecimalFormatRenderer extends DefaultTableCellRenderer {
@@ -134,5 +134,5 @@ public class EmployeeSummaryDialog extends JDialog implements ActionListener {
 
 			return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 		}// end getTableCellRendererComponent
-	}// DefaultTableCellRenderer
-}// end class EmployeeSummaryDialog
+	}
+}
