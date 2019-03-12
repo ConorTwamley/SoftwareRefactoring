@@ -669,20 +669,8 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 		}
 		if (!valid)
 			JOptionPane.showMessageDialog(null, "Wrong values or format! Please check!");
-		if (ppsField.isEditable())
-			setToWhite();
 
 		return valid;
-	}
-
-	private void setToWhite() {
-		ppsField.setBackground(UIManager.getColor("TextField.background"));
-		surnameField.setBackground(UIManager.getColor("TextField.background"));
-		firstNameField.setBackground(UIManager.getColor("TextField.background"));
-		salaryField.setBackground(UIManager.getColor("TextField.background"));
-		genderCombo.setBackground(UIManager.getColor("TextField.background"));
-		departmentCombo.setBackground(UIManager.getColor("TextField.background"));
-		fullTimeCombo.setBackground(UIManager.getColor("TextField.background"));
 	}
 
 	// enable text fields for editing
