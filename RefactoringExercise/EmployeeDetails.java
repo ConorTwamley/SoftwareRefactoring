@@ -783,7 +783,6 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 			}
 			else
 				application.createFile(newFile.getAbsolutePath());
-
 			try {
 				Files.copy(file.toPath(), newFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
 				if (file.getName().equals(generatedFileName))
@@ -870,14 +869,14 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 				saveFileAs();
 				change = false;
 			}
+			else if (e.getSource() == saveChange) {
+				saveChanges();
+			}
 			else if (e.getSource() == searchById) {
 				displaySearchByIdDialog();
 			}
 			else if (e.getSource() == searchBySurname) {
 				displaySearchBySurnameDialog();
-			}
-			else if (e.getSource() == saveChange) {
-				;
 			}
 			else if (e.getSource() == firstItem || e.getSource() == first) {
 				firstRecord();
