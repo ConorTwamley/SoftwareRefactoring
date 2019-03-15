@@ -672,6 +672,9 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 		}
 		if (!valid)
 			JOptionPane.showMessageDialog(null, "Wrong values or format! Please check!");
+		
+//		if (ppsField.isEditable())
+//			setToWhite();
 
 		return valid;
 	}
@@ -759,6 +762,8 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 				JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
 		// if user choose to save changes, save changes
 		if (returnVal == JOptionPane.YES_OPTION) {
+			//Add formatting of the string here
+			salaryField.setText(fieldFormat.format(currentEmployee.getSalary()));
 			application.openWriteFile(file.getAbsolutePath());
 			currentEmployee = getChangedDetails();
 			application.changeRecords(currentEmployee, currentPosition);
@@ -850,17 +855,6 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 		file = new File(generatedFileName);
 		application.createFile(file.getName());
 	}
-	
-	// set text field background colour to white
-		private void setToWhite() {
-			ppsField.setBackground(UIManager.getColor("TextField.background"));
-			surnameField.setBackground(UIManager.getColor("TextField.background"));
-			firstNameField.setBackground(UIManager.getColor("TextField.background"));
-			salaryField.setBackground(UIManager.getColor("TextField.background"));
-			genderCombo.setBackground(UIManager.getColor("TextField.background"));
-			departmentCombo.setBackground(UIManager.getColor("TextField.background"));
-			fullTimeCombo.setBackground(UIManager.getColor("TextField.background"));
-		}// end setToWhite
 
 	// action listener for buttons, text field and menu items
 	public void actionPerformed(ActionEvent e) {
