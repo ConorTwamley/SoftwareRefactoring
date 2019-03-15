@@ -276,7 +276,7 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 				((JComboBox<String>) empDetails.getComponent(i)).setRenderer(new DefaultListCellRenderer() {
 					// set foreground to combo boxes
 					public void paint(Graphics g) {
-						setForeground(new Color(65, 65, 65));
+						setForeground(Colours.foreground);
 						super.paint(g);
 					}
 				});
