@@ -270,7 +270,7 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 				field.getDocument().addDocumentListener(this);
 			}
 			else if (empDetails.getComponent(i) instanceof JComboBox) {
-				empDetails.getComponent(i).setBackground(Color.WHITE);
+				empDetails.getComponent(i).setBackground(Colours.white);
 				empDetails.getComponent(i).setEnabled(false);
 				((JComboBox<String>) empDetails.getComponent(i)).addItemListener(this);
 				((JComboBox<String>) empDetails.getComponent(i)).setRenderer(new DefaultListCellRenderer() {
@@ -417,10 +417,10 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 			}
 		}
 		catch (NumberFormatException e) {
-			searchByIdField.setBackground(new Color(255, 150, 150));
+			searchByIdField.setBackground(Colours.red);
 			JOptionPane.showMessageDialog(null, "Wrong ID format!");
 		}
-		searchByIdField.setBackground(Color.WHITE);
+		searchByIdField.setBackground(Colours.white);
 		searchByIdField.setText("");
 	}
 
@@ -629,45 +629,45 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 		boolean valid = true;
 		
 		if (ppsField.isEditable() && ppsField.getText().trim().isEmpty()) {
-			ppsField.setBackground(new Color(255, 150, 150));
+			ppsField.setBackground(Colours.red);
 			valid = false;
 		}
 		if (ppsField.isEditable() && correctPps(ppsField.getText().trim(), currentPosition)) {
-			ppsField.setBackground(new Color(255, 150, 150));
+			ppsField.setBackground(Colours.red);
 			valid = false;
 		}
 		if (surnameField.isEditable() && surnameField.getText().trim().isEmpty()) {
-			surnameField.setBackground(new Color(255, 150, 150));
+			surnameField.setBackground(Colours.red);
 			valid = false;
 		}
 		if (firstNameField.isEditable() && firstNameField.getText().trim().isEmpty()) {
-			firstNameField.setBackground(new Color(255, 150, 150));
+			firstNameField.setBackground(Colours.red);
 			valid = false;
 		}
 		if (genderCombo.getSelectedIndex() == 0 && genderCombo.isEnabled()) {
-			genderCombo.setBackground(new Color(255, 150, 150));
+			genderCombo.setBackground(Colours.red);
 			valid = false;
 		}
 		if (departmentCombo.getSelectedIndex() == 0 && departmentCombo.isEnabled()) {
-			departmentCombo.setBackground(new Color(255, 150, 150));
+			departmentCombo.setBackground(Colours.red);
 			valid = false;
 		}
 		try {
 			Double.parseDouble(salaryField.getText());
 			// check if salary is greater than 0
 			if (Double.parseDouble(salaryField.getText()) < 0) {
-				salaryField.setBackground(new Color(255, 150, 150));
+				salaryField.setBackground(Colours.red);
 				valid = false;
 			}
 		}
 		catch (NumberFormatException num) {
 			if (salaryField.isEditable()) {
-				salaryField.setBackground(new Color(255, 150, 150));
+				salaryField.setBackground(Colours.red);
 				valid = false;
 			}
 		}
 		if (fullTimeCombo.getSelectedIndex() == 0 && fullTimeCombo.isEnabled()) {
-			fullTimeCombo.setBackground(new Color(255, 150, 150));
+			fullTimeCombo.setBackground(Colours.red);
 			valid = false;
 		}
 		if (!valid)
