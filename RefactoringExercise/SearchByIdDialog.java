@@ -21,7 +21,7 @@ public class SearchByIdDialog extends JDialog implements ActionListener {
 	JTextField searchField;
 	// constructor for SearchByIdDialog 
 	public SearchByIdDialog(EmployeeDetails parent) {
-		setTitle("Search by Surname");
+		setTitle("Search by ID");
 		setModal(true); 
 		this.parent = parent;
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -43,7 +43,6 @@ public class SearchByIdDialog extends JDialog implements ActionListener {
 		JPanel buttonPanel = new JPanel();
 		JLabel searchLabel;
 
-		searchPanel.add(new JLabel("Search by ID"));
 
 		textPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
 		textPanel.add(searchLabel = new JLabel("Enter ID:"));

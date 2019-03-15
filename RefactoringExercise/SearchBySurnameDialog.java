@@ -40,8 +40,6 @@ public class SearchBySurnameDialog extends JDialog implements ActionListener{
 		JPanel textPanel = new JPanel();
 		JPanel buttonPanel = new JPanel();
 		JLabel searchLabel;
-
-		searchPanel.add(new JLabel("Search by Surname"));
 	
 		textPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
 		textPanel.add(searchLabel = new JLabel("Enter Surname:"));
