@@ -106,8 +106,8 @@ public class EmployeeSummaryDialog extends JDialog implements ActionListener {
 		back.addActionListener(this);
 		back.setToolTipText("Return to main screen");
 		
-		summaryDialog.add(buttonPanel,"growx, pushx, wrap");
-		summaryDialog.add(scrollPane,"growx, pushx, wrap");
+		summaryDialog.add(buttonPanel,LayoutManager.layout2);
+		summaryDialog.add(scrollPane,LayoutManager.layout2);
 		scrollPane.setBorder(BorderFactory.createTitledBorder("Employee Details"));
 		
 		return summaryDialog;
@@ -133,6 +133,6 @@ public class EmployeeSummaryDialog extends JDialog implements ActionListener {
 			value = format.format((Number) value);
 
 			return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-		}// end getTableCellRendererComponent
+		}
 	}
 }

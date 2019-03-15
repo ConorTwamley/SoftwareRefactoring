@@ -55,30 +55,30 @@ public class AddRecordDialog extends JDialog implements ActionListener {
 
 		empDetails.setBorder(BorderFactory.createTitledBorder("Employee Details"));
 
-		empDetails.add(new JLabel("ID:"), "growx, pushx");
-		empDetails.add(idField = new JTextField(20), "growx, pushx, wrap");
+		empDetails.add(new JLabel("ID:"), LayoutManager.layout1);
+		empDetails.add(idField = new JTextField(20), LayoutManager.layout2);
 		idField.setEditable(false);
 		
-		empDetails.add(new JLabel("PPS Number:"), "growx, pushx");
-		empDetails.add(ppsField = new JTextField(20), "growx, pushx, wrap");
+		empDetails.add(new JLabel("PPS Number:"), LayoutManager.layout1);
+		empDetails.add(ppsField = new JTextField(20), LayoutManager.layout2);
 
-		empDetails.add(new JLabel("Surname:"), "growx, pushx");
-		empDetails.add(surnameField = new JTextField(20), "growx, pushx, wrap");
+		empDetails.add(new JLabel("Surname:"), LayoutManager.layout1);
+		empDetails.add(surnameField = new JTextField(20), LayoutManager.layout2);
 
-		empDetails.add(new JLabel("First Name:"), "growx, pushx");
-		empDetails.add(firstNameField = new JTextField(20), "growx, pushx, wrap");
+		empDetails.add(new JLabel("First Name:"), LayoutManager.layout1);
+		empDetails.add(firstNameField = new JTextField(20), LayoutManager.layout2);
 
-		empDetails.add(new JLabel("Gender:"), "growx, pushx");
-		empDetails.add(genderCombo = new JComboBox<String>(this.parent.gender), "growx, pushx, wrap");
+		empDetails.add(new JLabel("Gender:"), LayoutManager.layout1);
+		empDetails.add(genderCombo = new JComboBox<String>(this.parent.gender), LayoutManager.layout2);
 
-		empDetails.add(new JLabel("Department:"), "growx, pushx");
-		empDetails.add(departmentCombo = new JComboBox<String>(this.parent.department), "growx, pushx, wrap");
+		empDetails.add(new JLabel("Department:"), LayoutManager.layout1);
+		empDetails.add(departmentCombo = new JComboBox<String>(this.parent.department), LayoutManager.layout2);
 
-		empDetails.add(new JLabel("Salary:"), "growx, pushx");
-		empDetails.add(salaryField = new JTextField(20), "growx, pushx, wrap");
+		empDetails.add(new JLabel("Salary:"), LayoutManager.layout1);
+		empDetails.add(salaryField = new JTextField(20), LayoutManager.layout2);
 
-		empDetails.add(new JLabel("Full Time:"), "growx, pushx");
-		empDetails.add(fullTimeCombo = new JComboBox<String>(this.parent.fullTime), "growx, pushx, wrap");
+		empDetails.add(new JLabel("Full Time:"), LayoutManager.layout1);
+		empDetails.add(fullTimeCombo = new JComboBox<String>(this.parent.fullTime), LayoutManager.layout2);
 
 		buttonPanel.add(save = new JButton("Save"));
 		save.addActionListener(this);
@@ -86,7 +86,7 @@ public class AddRecordDialog extends JDialog implements ActionListener {
 		buttonPanel.add(cancel = new JButton("Cancel"));
 		cancel.addActionListener(this);
 
-		empDetails.add(buttonPanel, "span 2,growx, pushx,wrap");
+		empDetails.add(buttonPanel, LayoutManager.layout3);
 		// loop through all panel components and add fonts and listeners
 		for (int i = 0; i < empDetails.getComponentCount(); i++) {
 			empDetails.getComponent(i).setFont(this.parent.font1);
@@ -180,4 +180,15 @@ public class AddRecordDialog extends JDialog implements ActionListener {
 		else if (e.getSource() == cancel)
 			dispose();
 	}
+	
+	// set text field to white colour
+		public void setToWhite() {
+			ppsField.setBackground(Color.WHITE);
+			surnameField.setBackground(Color.WHITE);
+			firstNameField.setBackground(Color.WHITE);
+			salaryField.setBackground(Color.WHITE);
+			genderCombo.setBackground(Color.WHITE);
+			departmentCombo.setBackground(Color.WHITE);
+			fullTimeCombo.setBackground(Color.WHITE);
+		}// end setToWhite
 }

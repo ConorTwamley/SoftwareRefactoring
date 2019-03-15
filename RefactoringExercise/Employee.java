@@ -96,16 +96,16 @@ public class Employee{
 		this.fullTime = fullTime;
 	}
 
-	// Display Employee details
-	public String toString() {
-		String bool = "";
-		if (fullTime)
-			bool = "Yes";
-		else
-			bool = "No";
-
-		return "Employee ID: " + this.employeeId + "\nPPS Number: " + this.pps + "\nSurname: " + this.surname
-				+ "\nFirst Name: " + this.firstName + "\nGender: " + this.gender + "\nDepartment: " + this.department + "\nSalary: " + this.salary
-				+ "\nFull Time: " + bool;
-	}
+//	// Display Employee details
+//	public String toString() {
+//		String bool = "";
+//		if (fullTime)
+//			bool = "Yes";
+//		else
+//			bool = "No";
+//
+//		return "Employee ID: " + this.employeeId + "\nPPS Number: " + this.pps + "\nSurname: " + this.surname
+//				+ "\nFirst Name: " + this.firstName + "\nGender: " + this.gender + "\nDepartment: " + this.department + "\nSalary: " + this.salary
+//				+ "\nFull Time: " + bool;
+//	}
 }

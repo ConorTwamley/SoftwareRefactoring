@@ -139,7 +139,7 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 		JPanel searchPanel = new JPanel(new MigLayout());
 
 		searchPanel.setBorder(BorderFactory.createTitledBorder("Search"));
-		searchPanel.add(new JLabel("Search by ID:"), "growx, pushx");
+		searchPanel.add(new JLabel("Search by ID:"), LayoutManager.layout1);
 		searchPanel.add(searchByIdField = new JTextField(20), "width 200:200:200, growx, pushx");
 		searchByIdField.addActionListener(this);
 		searchByIdField.setDocument(new JTextFieldLimit(20));
@@ -149,7 +149,7 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 		searchId.addActionListener(this);
 		searchId.setToolTipText("Search Employee By ID");
 
-		searchPanel.add(new JLabel("Search by Surname:"), "growx, pushx");
+		searchPanel.add(new JLabel("Search by Surname:"), LayoutManager.layout1);
 		searchPanel.add(searchBySurnameField = new JTextField(20), "width 200:200:200, growx, pushx");
 		searchBySurnameField.addActionListener(this);
 		searchBySurnameField.setDocument(new JTextFieldLimit(20));
@@ -198,16 +198,16 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 	private JPanel buttonPanel() {
 		JPanel buttonPanel = new JPanel();
 
-		buttonPanel.add(add = new JButton("Add Record"), "growx, pushx");
+		buttonPanel.add(add = new JButton("Add Record"), LayoutManager.layout1);
 		add.addActionListener(this);
 		add.setToolTipText("Add new Employee Record");
-		buttonPanel.add(edit = new JButton("Edit Record"), "growx, pushx");
+		buttonPanel.add(edit = new JButton("Edit Record"), LayoutManager.layout1);
 		edit.addActionListener(this);
 		edit.setToolTipText("Edit current Employee");
-		buttonPanel.add(deleteButton = new JButton("Delete Record"), "growx, pushx, wrap");
+		buttonPanel.add(deleteButton = new JButton("Delete Record"), LayoutManager.layout2);
 		deleteButton.addActionListener(this);
 		deleteButton.setToolTipText("Delete current Employee");
-		buttonPanel.add(displayAll = new JButton("List all Records"), "growx, pushx");
+		buttonPanel.add(displayAll = new JButton("List all Records"), LayoutManager.layout1);
 		displayAll.addActionListener(this);
 		displayAll.setToolTipText("List all Registered Employees");
 
@@ -221,30 +221,30 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 
 		empDetails.setBorder(BorderFactory.createTitledBorder("Employee Details"));
 
-		empDetails.add(new JLabel("ID:"), "growx, pushx");
-		empDetails.add(idField = new JTextField(20), "growx, pushx, wrap");
+		empDetails.add(new JLabel("ID:"), LayoutManager.layout1);
+		empDetails.add(idField = new JTextField(20), LayoutManager.layout2);
 		idField.setEditable(false);
 
-		empDetails.add(new JLabel("PPS Number:"), "growx, pushx");
-		empDetails.add(ppsField = new JTextField(20), "growx, pushx, wrap");
+		empDetails.add(new JLabel("PPS Number:"), LayoutManager.layout1);
+		empDetails.add(ppsField = new JTextField(20), LayoutManager.layout2);
 
-		empDetails.add(new JLabel("Surname:"), "growx, pushx");
-		empDetails.add(surnameField = new JTextField(20), "growx, pushx, wrap");
+		empDetails.add(new JLabel("Surname:"), LayoutManager.layout1);
+		empDetails.add(surnameField = new JTextField(20), LayoutManager.layout2);
 
-		empDetails.add(new JLabel("First Name:"), "growx, pushx");
-		empDetails.add(firstNameField = new JTextField(20), "growx, pushx, wrap");
+		empDetails.add(new JLabel("First Name:"), LayoutManager.layout1);
+		empDetails.add(firstNameField = new JTextField(20), LayoutManager.layout2);
 
-		empDetails.add(new JLabel("Gender:"), "growx, pushx");
-		empDetails.add(genderCombo = new JComboBox<String>(gender), "growx, pushx, wrap");
+		empDetails.add(new JLabel("Gender:"), LayoutManager.layout1);
+		empDetails.add(genderCombo = new JComboBox<String>(gender), LayoutManager.layout2);
 
-		empDetails.add(new JLabel("Department:"), "growx, pushx");
-		empDetails.add(departmentCombo = new JComboBox<String>(department), "growx, pushx, wrap");
+		empDetails.add(new JLabel("Department:"), LayoutManager.layout1);
+		empDetails.add(departmentCombo = new JComboBox<String>(department), LayoutManager.layout2);
 
-		empDetails.add(new JLabel("Salary:"), "growx, pushx");
-		empDetails.add(salaryField = new JTextField(20), "growx, pushx, wrap");
+		empDetails.add(new JLabel("Salary:"), LayoutManager.layout1);
+		empDetails.add(salaryField = new JTextField(20), LayoutManager.layout2);
 
-		empDetails.add(new JLabel("Full Time:"), "growx, pushx");
-		empDetails.add(fullTimeCombo = new JComboBox<String>(fullTime), "growx, pushx, wrap");
+		empDetails.add(new JLabel("Full Time:"), LayoutManager.layout1);
+		empDetails.add(fullTimeCombo = new JComboBox<String>(fullTime), LayoutManager.layout2);
 
 		buttonPanel.add(saveChange = new JButton("Save"));
 		saveChange.addActionListener(this);
@@ -255,7 +255,7 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 		cancelChange.setVisible(false);
 		cancelChange.setToolTipText("Cancel edit");
 
-		empDetails.add(buttonPanel, "span 2,growx, pushx,wrap");
+		empDetails.add(buttonPanel, LayoutManager.layout3);
 
 		// loop through panel components and add listeners and format
 		for (int i = 0; i < empDetails.getComponentCount(); i++) {
@@ -850,6 +850,17 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 		file = new File(generatedFileName);
 		application.createFile(file.getName());
 	}
+	
+	// set text field background colour to white
+		private void setToWhite() {
+			ppsField.setBackground(UIManager.getColor("TextField.background"));
+			surnameField.setBackground(UIManager.getColor("TextField.background"));
+			firstNameField.setBackground(UIManager.getColor("TextField.background"));
+			salaryField.setBackground(UIManager.getColor("TextField.background"));
+			genderCombo.setBackground(UIManager.getColor("TextField.background"));
+			departmentCombo.setBackground(UIManager.getColor("TextField.background"));
+			fullTimeCombo.setBackground(UIManager.getColor("TextField.background"));
+		}// end setToWhite
 
 	// action listener for buttons, text field and menu items
 	public void actionPerformed(ActionEvent e) {
