@@ -672,9 +672,6 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 		}
 		if (!valid)
 			JOptionPane.showMessageDialog(null, "Wrong values or format! Please check!");
-		
-//		if (ppsField.isEditable())
-//			setToWhite();
 
 		return valid;
 	}
@@ -753,10 +750,6 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 		}
 	}
 
-	//This is being called every time that a change is made to the text fields 
-	//even after you delete an employee
-	//and go to add another.
-	// save changes to current Employee
 	private void saveChanges() {
 		int returnVal = JOptionPane.showOptionDialog(frame, "Do you want to save changes to current Employee?", "Save",
 				JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
