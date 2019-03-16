@@ -255,6 +255,8 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 		cancelChange.setVisible(false);
 		cancelChange.setToolTipText("Cancel edit");
 
+		
+	
 		empDetails.add(buttonPanel, LayoutManager.layout3);
 
 		// loop through panel components and add listeners and format
