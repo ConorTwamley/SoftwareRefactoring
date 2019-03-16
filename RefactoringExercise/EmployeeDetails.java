@@ -390,7 +390,6 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 
 	public void searchEmployeeById() {
 		boolean found = false;
-
 		try {
 			if (isSomeoneToDisplay()) {
 				firstRecord();
@@ -466,7 +465,6 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 		return nextFreeId;
 	}
 
-	// get values from text fields and create Employee object
 	private Employee getChangedDetails() {
 		boolean fullTime = false;
 		Employee theEmployee;
@@ -481,14 +479,13 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 		return theEmployee;
 	}
 
-	// add Employee object to fail
 	public void addRecord(Employee newEmployee) {
 		application.openWriteFile(file.getAbsolutePath());
 		currentPosition = application.addRecords(newEmployee);
 		application.closeWriteFile();
 	}
 
-	// delete (make inactive - empty) record from file
+	
 	private void deleteRecord() {
 		if (isSomeoneToDisplay()) {
 			int returnVal = JOptionPane.showOptionDialog(frame, "Do you want to delete record?", "Delete",
@@ -624,56 +621,55 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 		return anyChanges;
 	}
 
-	// check for input in text fields
 	private boolean checkInput() {
+		boolean validation = true;
 		boolean valid = true;
 		
-		if (ppsField.isEditable() && ppsField.getText().trim().isEmpty()) {
-			ppsField.setBackground(Colours.red);
-			valid = false;
+		if (Validation.validate(ppsField, surnameField, firstNameField, genderCombo, departmentCombo)) {
+			validation = false;
 		}
-		if (ppsField.isEditable() && correctPps(ppsField.getText().trim(), currentPosition)) {
-			ppsField.setBackground(Colours.red);
-			valid = false;
-		}
-		if (surnameField.isEditable() && surnameField.getText().trim().isEmpty()) {
-			surnameField.setBackground(Colours.red);
-			valid = false;
-		}
-		if (firstNameField.isEditable() && firstNameField.getText().trim().isEmpty()) {
-			firstNameField.setBackground(Colours.red);
-			valid = false;
-		}
-		if (genderCombo.getSelectedIndex() == 0 && genderCombo.isEnabled()) {
-			genderCombo.setBackground(Colours.red);
-			valid = false;
-		}
-		if (departmentCombo.getSelectedIndex() == 0 && departmentCombo.isEnabled()) {
-			departmentCombo.setBackground(Colours.red);
-			valid = false;
-		}
-		try {
-			Double.parseDouble(salaryField.getText());
-			// check if salary is greater than 0
-			if (Double.parseDouble(salaryField.getText()) < 0) {
-				salaryField.setBackground(Colours.red);
+		
+		if (validation == false) {
+			
+			if (ppsField.isEditable() && correctPps(ppsField.getText().trim(), currentPosition)) {
+				ppsField.setBackground(Color.red);
 				valid = false;
-			}
-		}
-		catch (NumberFormatException num) {
-			if (salaryField.isEditable()) {
-				salaryField.setBackground(Colours.red);
+			} 
+		
+			try {
+				Double.parseDouble(salaryField.getText());
+				if (Double.parseDouble(salaryField.getText()) < 0) {
+					salaryField.setBackground(Color.red);
+					valid = false;
+				} 
+			} 
+			catch (NumberFormatException num) {
+				if (salaryField.isEditable()) {
+					salaryField.setBackground(Color.red);
+					valid = false;
+				} 
+			} 
+			if (fullTimeCombo.getSelectedIndex() == 0 && fullTimeCombo.isEnabled()) {
+				fullTimeCombo.setBackground(Color.red);
 				valid = false;
-			}
+			} 
+			if (!valid)
+				JOptionPane.showMessageDialog(null, "Wrong values or format! Please check!");
+			
+			if(ppsField.isEditable())
+				setToWhite();
 		}
-		if (fullTimeCombo.getSelectedIndex() == 0 && fullTimeCombo.isEnabled()) {
-			fullTimeCombo.setBackground(Colours.red);
-			valid = false;
-		}
-		if (!valid)
-			JOptionPane.showMessageDialog(null, "Wrong values or format! Please check!");
-
 		return valid;
+	}
+	
+	public void setToWhite() {
+		ppsField.setBackground(UIManager.getColor("TextField.background"));
+		surnameField.setBackground(UIManager.getColor("TextField.background"));
+		firstNameField.setBackground(UIManager.getColor("TextField.background"));
+		salaryField.setBackground(UIManager.getColor("TextField.background"));
+		genderCombo.setBackground(UIManager.getColor("TextField.background"));
+		departmentCombo.setBackground(UIManager.getColor("TextField.background"));
+		fullTimeCombo.setBackground(UIManager.getColor("TextField.background"));
 	}
 
 	// enable text fields for editing
@@ -744,7 +740,6 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 					}
 				}
 			}
-
 			displayRecords(currentEmployee);
 			setEnabled(false);
 		}
